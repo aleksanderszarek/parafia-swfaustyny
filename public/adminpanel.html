@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unified AdminPanel</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/adminpanel.css" />
+  </head>
+  <body>
+    <div id="overlay">
+      <center><h1 style="color: aliceblue">Unified AdminPanel</h1></center>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(function () {
+          overlay.style.display = "none";
+        }, 2000);
+      });
+    </script>
+    <div id="login">
+      <div class="modal-content">
+        <h1>Zaloguj się</h1>
+        <br />
+        <div class="container">
+          <h3>Nazwa użytkownika</h3>
+          <input id="username" />
+        </div>
+        <div class="container">
+          <h3>Hasło</h3>
+          <input id="password" type="password" />
+        </div>
+        <button onclick="location.href='index.html'" class="close-modal-btn">
+          Powrót
+        </button>
+        <button id="loginbtn" class="submit-btn">Zaloguj się</button>
+      </div>
+    </div>
+    <div id="serverError">
+      <div class="modal-content" style="z-index: 2">
+        <h2>Sesja wygasła</h2>
+        <h3>
+          Musisz zalogować się ponownie, aby otrzymać ponownie dostęp do panelu.
+        </h3>
+        <button onclick="location.href='adminpanel'" class="submit-btn">
+          OK
+        </button>
+      </div>
+    </div>
+    <main>
+      <center>
+        <div id="account" onclick="accountInfo()">
+          <img src="./images/male-icon.png" alt="" />
+          <h2>Demo Mode</h2>
+        </div>
+      </center>
+
+      <nav>
+        <div id="stats">
+          <div
+            class="stat"
+            onclick="document.querySelector('#custom-modal').style.display='block'; document.querySelector('#custom-modal h2').innerText = 'Wszystkie żądania'; document.querySelector('#custom-modal h3').innerText = 'Liczba wszystkich żądań wykonanych kiedykolwiek do serwera.'"
+          >
+            <img src="./images/login-icon.png" alt="" />
+            <div id="total">NO PERMISSION</div>
+          </div>
+          <div
+            class="stat"
+            onclick="document.querySelector('#custom-modal').style.display='block'; document.querySelector('#custom-modal h2').innerText = 'Unikatowe osoby'; document.querySelector('#custom-modal h3').innerText = 'Liczba unikatowych adresów IP, które kiedykolwiek połączyły się z serwerem, jest zbliżona do ilości osób, które kiedykolwiek skorzystały z twojej strony.'"
+          >
+            <img src="./images/boy-face-icon.png" alt="" />
+            <div id="unique">NO PERMISSION</div>
+          </div>
+          <div
+            class="stat"
+            onclick="document.querySelector('#custom-modal').style.display='block'; document.querySelector('#custom-modal h2').innerText = 'Zablokowane osoby'; document.querySelector('#custom-modal h3').innerText = 'Liczba adresów IP, których dostęp do strony został zabrany ręcznie poprzez panel oraz przez system automatycznej moderacji jeśli takowy jest włączony.'"
+          >
+            <img src="./images/robot-icon.png" alt="" />
+            <div id="banned">NO PERMISSION</div>
+          </div>
+        </div>
+        <br />
+        <h3>Dostęp do strony</h3>
+        <div class="stat" id="safetySettings">
+          <img
+            src="./images/lock-icon.png"
+            alt=""
+            onclick="document.getElementById('safetySettingsProgressBar').style ='width: 35%; background-color: #b30000'; document.querySelector('#safetySettings').style.border = '3px #b30000 solid'"
+          /><img
+            src="./images/confirm-password-icon.png"
+            alt=""
+            onclick="document.getElementById('safetySettingsProgressBar').style ='width: 64%; background-color: #b39500'; document.querySelector('#safetySettings').style.border = '3px #b39500 solid'"
+          /><img
+            src="./images/lock-open-icon.png"
+            alt=""
+            onclick="document.getElementById('safetySettingsProgressBar').style ='width: 100%; background-color: #00b31e'; document.querySelector('#safetySettings').style.border = '3px #00b31e solid'"
+          />
+          <span id="safetySettingsProgressBar"></span>
+        </div>
+        <h3>Zawartość strony</h3>
+        <h4>Ogłoszenia</h4>
+        <div class="stat" id="announcements">
+          <img
+            src="./images/close-square-icon.png"
+            alt=""
+            style="filter: opacity(0.5)"
+            onclick="return document.querySelector('#wip').style.display = 'block'"
+          />
+          <img
+            src="./images/pencil-square-icon.png"
+            alt=""
+            onclick="if(accountType == 0) return insufficientPermissions.style.display = 'block'; else return editAnnouncement()"
+          />
+          <img
+            src="./images/plus-square-icon.png"
+            alt=""
+            onclick="if(accountType == 0) return insufficientPermissions.style.display = 'block'; else return openAddAnnouncementPopup()"
+          />
+        </div>
+        <br />
+        <h4>Teren parafii</h4>
+        <div class="stat" id="borders">
+          <img
+            src="./images/close-square-icon.png"
+            alt=""
+            style="filter: opacity(0.5)"
+            onclick="return document.querySelector('#wip').style.display = 'block'"
+          />
+          <img
+            src="./images/pencil-square-icon.png"
+            alt=""
+            style="filter: opacity(0.5)"
+            onclick="return document.querySelector('#wip').style.display = 'block'"
+          />
+          <img
+            src="./images/plus-square-icon.png"
+            alt=""
+            style="filter: opacity(0.5)"
+            onclick="return document.querySelector('#wip').style.display = 'block'"
+          />
+        </div>
+        <br />
+        <h3>Dane użytkowników</h3>
+        <br />
+        <button
+          class="nav-btn"
+          onclick="if(accountType != 2) return insufficientPermissions.style.display = 'block'; else _pages()"
+        >
+          Odwiedzane strony
+        </button>
+        <button
+          class="nav-btn"
+          onclick="if(accountType != 2) return insufficientPermissions.style.display = 'block'; else _ips()"
+        >
+          Adresy IP
+        </button>
+        <button
+          class="nav-btn"
+          onclick="return document.querySelector('#wip').style.display = 'block'"
+        >
+          AutoMod
+        </button>
+      </nav>
+      <div id="wrongPassword">
+        <div class="modal-content" style="order: 1000">
+          <h2>Niepoprawny login lub hasło!</h2>
+          <h3>Pamiętaj, że wielkość liter ma znaczenie.</h3>
+          <button
+            onclick="wrongPassword.style.display = 'none'"
+            class="submit-btn"
+          >
+            Spróbuj ponownie
+          </button>
+        </div>
+      </div>
+      <div id="custom-modal" style="display: none">
+        <div class="modal-content" style="order: 1000">
+          <h2></h2>
+          <h3></h3>
+          <button
+            onclick="document.querySelector('#custom-modal').style.display = 'none'"
+            class="submit-btn"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+      <div id="savePassword">
+        <div class="modal-content" style="order: 1000">
+          <h2>Nie wylogowywać cię?</h2>
+          <h3>
+            Zapiszemy twoje dane logowania i nie będziesz musiał ich podawać
+            póki sesja nie wygaśnie.
+          </h3>
+          <button
+            onclick="savePassword.style.display = 'none'"
+            class="submit-btn"
+          >
+            Nie
+          </button>
+          <button
+            onclick="savePassword.style.display = 'none'; localStorage.setItem('sessionToken',token); localStorage.setItem('sessionSafetyToken',safetyToken); localStorage.setItem('sessionUsername',username); localStorage.setItem('sessionPassword',password); localStorage.setItem('sessionPermissionLevel',accountType); location.href='adminpanel'"
+            class="submit-btn"
+          >
+            Tak
+          </button>
+        </div>
+      </div>
+      <div id="accountInfo">
+        <div class="modal-content" style="order: 1000">
+          <h3 id="usernameField">Demo Mode</h3>
+          <h4 id="permissionField"></h4>
+          <br />
+          <button
+            class="nav-btn"
+            onclick="localStorage.removeItem('sessionToken'); localStorage.removeItem('sessionSafetyToken'); localStorage.removeItem('sessionUsername'); localStorage.removeItem('sessionPassword'); localStorage.removeItem('sessionPermissionLevel');location.href='/adminpanel'"
+          >
+            Wyloguj
+          </button>
+          <button class="nav-btn" id="back" onclick="location.href='/'">
+            Strona główna
+          </button>
+          <button
+            onclick="document.querySelector('#accountInfo').style.display = 'none'"
+            class="submit-btn"
+          >
+            Powrót
+          </button>
+        </div>
+      </div>
+      <div id="wip">
+        <div class="modal-content" style="order: 1000">
+          <h2>Funkcja niedostępna</h2>
+          <h3>Ta funkcja nie jest dostępna dla tej strony!</h3>
+          <button
+            onclick="document.querySelector('#wip').style.display = 'none'"
+            class="submit-btn"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+      <div id="insufficientPermissions">
+        <div class="modal-content" style="order: 1000">
+          <h2>Nie możesz tego zrobić!</h2>
+          <h3>
+            Aby wykonać tą operację musisz posiadać wyższy poziom uprawnień!
+          </h3>
+          <button
+            onclick="insufficientPermissions.style.display = 'none'"
+            class="submit-btn"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+      <div id="addAnnouncementPopup" class="modal">
+        <div class="modal-content">
+          <h4>Stwórz nowe ogłoszenie</h4>
+          <label for="loadAnnouncement">Wzór ogłoszenia:</label>
+          <br />
+          <select
+            name="loadAnnouncement"
+            id="loadAnnouncement"
+            oninput="loadAnn()"
+          >
+            <option value="new">Brak</option>
+          </select>
+          <br />
+          <label for="announcementTitle">Tytuł ogłoszenia:</label>
+          <br />
+          <textarea id="announcementTitle" rows="1" cols="30"></textarea>
+          <br />
+          <label for="announcementDescription">Opis ogłoszenia:</label>
+          <br />
+          <textarea id="announcementDescription" rows="15" cols="30"></textarea>
+          <br />
+          <label for="announcementDate">Data ogłoszenia:</label>
+          <br />
+          <textarea
+            id="announcementDate"
+            rows="1"
+            cols="30"
+            placeholder="01.09.2024"
+          ></textarea>
+          <br />
+          <label for="announcementQuote">Cytat:</label>
+          <textarea id="announcementQuote" rows="1" cols="30"></textarea>
+          <br />
+          <label for="quoteColor">Kolor cytatu:</label>
+          <select name="quoteColor" id="quoteColor">
+            <option value="red">Czerwony</option>
+            <option value="yellow">Żółty</option>
+            <option value="orange">Pomarańczowy</option>
+            <option value="green">Zielony</option>
+            <option value="purple">Fioletowy</option>
+            <option value="pink">Różowy</option>
+          </select>
+          <br />
+          <label for="quoteSize">Styl cytatu:</label>
+          <select name="quoteSize" id="quoteSize">
+            <option value="h4">Małe po prawej</option>
+            <option value="h5">Małe na środku</option>
+            <option value="h3">Średnie na środku</option>
+            <option value="h2">Duże na środku</option>
+            <option value="h1">Ogromne na środku</option>
+          </select>
+          <br />
+          <button
+            class="submit-btn"
+            onclick="addAnnouncement(); closeAddAnnouncementPopup();"
+          >
+            Opublikuj
+          </button>
+          <button class="close-modal-btn" onclick="closeAddAnnouncementPopup()">
+            Zamknij
+          </button>
+        </div>
+      </div>
+      <div id="editAnnouncementPopup" class="modal">
+        <div class="modal-content">
+          <h4>Edytuj ogłoszenie</h4>
+          <label for="loadAnnouncement2">Ogłoszenie:</label>
+          <br />
+          <select
+            name="loadAnnouncement22"
+            id="loadAnnouncement2"
+            oninput="loadAnn2()"
+          ></select>
+          <br />
+          <label for="announcementTitle2">Tytuł ogłoszenia:</label>
+          <br />
+          <textarea id="announcementTitle2" rows="1" cols="30"></textarea>
+          <br />
+          <label for="announcementDescription2">Opis ogłoszenia:</label>
+          <br />
+          <textarea
+            id="announcementDescription2"
+            rows="15"
+            cols="30"
+          ></textarea>
+          <br />
+          <label for="announcementDate2">Data ogłoszenia:</label>
+          <br />
+          <textarea
+            id="announcementDate2"
+            rows="1"
+            cols="30"
+            placeholder="01.09.2024"
+          ></textarea>
+          <br />
+          <label for="announcementQuote2">Cytat:</label>
+          <textarea id="announcementQuote2" rows="1" cols="30"></textarea>
+          <br />
+          <label for="quoteColor">Kolor cytatu:</label>
+          <select name="quoteColor" id="quoteColor2">
+            <option value="red">Czerwony</option>
+            <option value="yellow">Żółty</option>
+            <option value="orange">Pomarańczowy</option>
+            <option value="green">Zielony</option>
+            <option value="purple">Fioletowy</option>
+            <option value="pink">Różowy</option>
+          </select>
+          <br />
+          <label for="quoteSize2">Styl cytatu:</label>
+          <select name="quoteSize" id="quoteSize2">
+            <option value="h4">Małe po prawej</option>
+            <option value="h5">Małe na środku</option>
+            <option value="h3">Średnie na środku</option>
+            <option value="h2">Duże na środku</option>
+            <option value="h1">Ogromne na środku</option>
+          </select>
+          <br />
+          <button
+            class="submit-btn"
+            onclick="editAnnouncementS(); document.querySelector('#editAnnouncementPopup').style.display = 'none'"
+          >
+            Edytuj
+          </button>
+          <button
+            class="close-modal-btn"
+            onclick="document.querySelector('#editAnnouncementPopup').style.display = 'none'"
+          >
+            Zamknij
+          </button>
+        </div>
+      </div>
+      <div id="editBordersPopup" class="modal">
+        <div class="modal-content">
+          <h4>Kreator terenu parafii</h4>
+          <label for="borderField">Teren parafii:</label>
+          <br />
+          <textarea id="bordersField" rows="15" cols="30"></textarea>
+          <br />
+          <button
+            class="submit-btn"
+            onclick="setBorders(); closeBordersPopup();"
+          >
+            Opublikuj
+          </button>
+          <button class="close-modal-btn" onclick="closeBordersPopup()">
+            Zamknij
+          </button>
+        </div>
+      </div>
+      <div id="pagesContainer" class="modal">
+        <div class="modal-content">
+          <h4>Odwiedzane strony</h4>
+          <p id="pageCount"></p>
+          <div id="pagesContent"></div>
+          <button class="close-modal-btn" onclick="pages.style.display='none'">
+            Zamknij
+          </button>
+          <button
+            class="submit-btn"
+            onclick="if(currentPage > 28){ currentPage -= 30; displayPages(currentPage, currentPage + 30)}"
+          >
+            Previous
+          </button>
+          <button
+            class="submit-btn"
+            onclick="currentPage += 30; displayPages(currentPage, currentPage + 30 >= pageCount ? pageCount - 1 : currentPage + 30)"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div id="ipsContainer" class="modal">
+        <div class="modal-content">
+          <h4>Adresy IP</h4>
+          <h5>Filtry</h5>
+          <button
+            class="submit-btn"
+            onclick="ipsFilter = 'total_requests'; displayIPS(0,30);"
+          >
+            Ilość wszystkich żądań</button
+          ><button
+            class="submit-btn"
+            onclick="ipsFilter = 'get_requests'; displayIPS(0,30);"
+          >
+            Ilość żądań GET</button
+          ><button
+            class="submit-btn"
+            onclick="ipsFilter = 'post_requests'; displayIPS(0,30);"
+          >
+            Ilość żądań POST</button
+          ><button
+            class="submit-btn"
+            onclick="ipsFilter = 'other_requests'; displayIPS(0,30);"
+          >
+            Ilość innych żądań</button
+          ><button
+            class="submit-btn"
+            onclick="ipsFilter = 'last_request_time'; displayIPS(0,30);"
+          >
+            Czas ostatniego żądania
+          </button>
+          <p id="ipsCount"></p>
+          <div id="ipContent"></div>
+          <button class="close-modal-btn" onclick="ips.style.display='none'">
+            Zamknij
+          </button>
+          <button
+            class="submit-btn"
+            onclick="if(currentIP > 28){ currentIP -= 30; displayIPS(currentIP, currentIP + 30)}"
+          >
+            Previous
+          </button>
+          <button
+            class="submit-btn"
+            onclick="currentIP += 30; displayIPS(currentIP, currentIP + 30 >= ipCount ? ipCount - 1 : currentIP + 30)"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+      <div id="announcementHistory" class="modal">
+        <div class="modal-content">
+          <h4>Historia ogłoszeń</h4>
+          <div id="listContainer"></div>
+        </div>
+      </div>
+    </main>
+    <div id="success">
+      <div class="modal-content" style="z-index: 1000">
+        <h2>Zmiany zostały zapisane</h2>
+        <button onclick="success.style.display = 'none'" class="submit-btn">
+          OK
+        </button>
+      </div>
+    </div>
+    <footer>
+      This website is powered by Unified, a complex solution for website
+      management. This product has been registed for Parafia Świętej Faustyny
+      Dziewicy w Częstochowie<br />Copyright 2024 Unified. All rights reserved!
+    </footer>
+    <script src="js/adminpanel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "username": "rydz_szymon",
+    "password": "Zosia123",
+    "accountPermissions": 0
+  },
+  {
+    "username": "kswojciech",
+    "password": "Helena0510",
+    "accountPermissions": 1
+  },
+  {
+    "username": "admin",
+    "password": "Olek123",
+    "accountPermissions": 2
+  }
+]

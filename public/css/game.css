@@ -1,0 +1,119 @@
+body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  padding: 20px;
+  background-color: #333;
+  color: #e0e0e0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
+.game-layout {
+  display: flex;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.game-content {
+  flex: 2;
+  padding: 20px;
+  background-color: #292929;
+  border-radius: 10px;
+  text-align: center;
+}
+
+aside.game-sidebar {
+  flex: 1;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.player-list h3,
+.sound-effects h3 {
+  color: #00aaff;
+}
+
+#playerList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#playerList li {
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.sound-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#timer {
+  font-size: 2rem;
+  color: #ff3333;
+}
+
+input,
+button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1rem;
+}
+
+input {
+  width: calc(100% - 40px);
+  border: 1px solid #00aaff;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #333;
+}
+
+button {
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#roundCount {
+  text-align: right;
+  font-size: large;
+}
+@media (max-width: 600px) {
+  .game-layout {
+    flex-direction: column;
+    gap: 30px;
+  }
+  aside.game-sidebar {
+    margin-left: 0;
+  }
+}
+.profile {
+  margin: 15px 0px;
+  padding: 15px;
+  background-color: #292929;
+  box-shadow: #1a1a1a 3px 3px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}

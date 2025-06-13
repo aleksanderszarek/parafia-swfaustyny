@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parafia Świętej Faustyny w Częstochowie</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>Telepatia</header>
+    <br /><br />
+    <main>
+      <div id="login" class="message-container">
+        <h3>Witaj! Jak się nazywasz?</h3>
+        <div class="button-group">
+          <input id="name_input" type="text" />
+          <button class="nav-btn" onclick="saveUsername()">OK</button>
+        </div>
+      </div>
+      <div id="game_menu" style="display: none" class="message-container">
+        <h3>Miło cię widzieć!</h3>
+        <div class="button-group">
+          <button
+            class="nav-btn"
+            onclick="document.querySelector('#game_menu').style.display = 'none'; document.querySelector('#game_start').style.display = 'flex'; "
+          >
+            Zagraj
+          </button>
+          <button
+            class="nav-btn"
+            onclick="document.querySelector('#game_menu').style.display = 'none'; document.querySelector('#game_shop').style.display = 'flex'; "
+          >
+            Sklep
+          </button>
+        </div>
+      </div>
+      <div id="pairing" style="display: none" class="message-container">
+        <h3>Oczekiwanie na przeciwnika</h3>
+        <div id="timer2">30</div>
+      </div>
+      <div id="game_shop" style="display: none" class="message-container">
+        <h3 id="bal">Sklep | Balans: $0</h3>
+        <h4>Style nicków</h4>
+        <div class="button-group">
+          <button class="nav-btn" onclick="">Biały</button>
+          <button class="nav-btn" onclick="">Różowy ($20)</button>
+          <button class="nav-btn" onclick="">Żółty ($20)</button>
+          <button class="nav-btn" onclick="">Niebieski ($35)</button>
+          <button class="nav-btn" onclick="">Srebrny ($55)</button>
+        </div>
+        <h4>Emotki</h4>
+        <div class="button-group">
+          <button class="nav-btn" onclick="">Bruh ($10)</button>
+          <button class="nav-btn" onclick="">What the fuck? ($15)</button>
+          <button class="nav-btn" onclick="">Discord disconnect ($15)</button>
+          <button class="nav-btn" onclick="">Oh shit ($20)</button>
+        </div>
+      </div>
+      <div id="game_start" style="display: none" class="message-container">
+        <h3>Wybierz, którym graczem chcesz być:</h3>
+        <div class="button-group">
+          <button class="nav-btn" onclick="startGame(1)">Gracz 1</button>
+          <button class="nav-btn" onclick="startGame(2)">Gracz 2</button>
+        </div>
+      </div>
+      <section id="during_game" class="game-layout" style="display: none">
+        <div class="game-content">
+          <h2 id="roundCount">1/10</h2>
+          <h3 id="timer">30</h3>
+          <input id="input" type="text" placeholder="Wpisz odpowiedź" />
+          <button class="nav-btn" onclick="send()">Wyślij</button>
+          <br />
+          <div class="div"></div>
+          <div class="words">
+            <h3>Twoje słowa:</h3>
+            <h4 id="p2l"></h4>
+          </div>
+          <div class="div"></div>
+          <div class="words">
+            <h3>Słowa innego gracza:</h3>
+            <h4 id="p1l"></h4>
+          </div>
+        </div>
+        <aside class="game-sidebar">
+          <div class="player-list">
+            <h3>Gracze</h3>
+            <div class="profile">
+              <span id="usernameDisplay">Twoje Imię</span> (Ty)
+            </div>
+            <div class="profile">
+              <span id="opponentDisplay">Przeciwnik</span>
+            </div>
+          </div>
+          <div class="sound-effects">
+            <h3>Efekty dźwiękowe</h3>
+            <button class="sound-btn" onclick="">Efekt 1 ($20)</button>
+            <button class="sound-btn" onclick="">Efekt 2 ($20)</button>
+            <button class="sound-btn" onclick="">Efekt 3 ($30)</button>
+          </div>
+        </aside>
+      </section>
+      <div id="game_lose" style="display: none" class="message-container">
+        <h2>Niestety nie udało ci się wygrać</h2>
+        <button class="nav-btn" onclick="location.href=''">
+          Zagraj jeszcze raz
+        </button>
+      </div>
+      <div id="game_win" style="display: none" class="message-container">
+        <h2>Brawo! Wygrałeś!</h2>
+        <button class="nav-btn" onclick="location.href=''">
+          Zagraj jeszcze raz
+        </button>
+      </div>
+    </main>
+  </body>
+  <script src="js/game.js"></script>
+</html>
+<main></main>

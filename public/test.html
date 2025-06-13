@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parafia Świętej Faustyny w Częstochowie</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div>
+        <img class="bgimg" src="images/background-image.png" />
+        <h1 id="mobile">
+          Parafia<br />
+          Św. Faustyny Dziewicy<br />
+          w Częstochowie
+          <div id="menuBtn">
+            <div id="nav-icon1" onclick="hamburgerMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </h1>
+        <h1 id="computer">Parafia Św. Faustyny Dziewicy w Częstochowie</h1>
+      </div>
+    </header>
+    <div class="message-container" id="bigMenu">
+      <button class="nav-btn" onclick="location.href='/'">Strona Główna</button>
+      <button class="nav-btn" onclick="location.href='/announcements'">
+        Ogłoszenia
+      </button>
+      <button class="nav-btn" onclick="location.href='/gallery'">
+        Galeria
+      </button>
+      <button class="nav-btn">Harmonogram</button>
+      <button class="nav-btn" onclick="location.href='/borders'">
+        Teren parafii
+      </button>
+      <button class="nav-btn" onclick="location.href='/outhouse'">
+        Szopka bożonarodzeniowa
+      </button>
+      <button class="nav-btn" onclick="location.href='/contact'">
+        Kontakt
+      </button>
+    </div>
+    <div class="popup" id="cookie-popup" style="display: none">
+      <div class="popup-content">
+        <div>
+          <div class="popup-header">
+            <img src="images/cookie-bite-icon.png" />
+            <h1>Pliki cookies</h1>
+          </div>
+
+          <h2 class="popupText">
+            Pliki cookies na naszej stronie pozwalają zapamiętać Twoje
+            preferencje oraz usprawnić działanie strony. Więcej informacji na
+            temat działania plików cookies możesz przeczytać w
+            <a href="/privacypolicy" id="cp-link"> polityce prywatności</a>.
+          </h2>
+        </div>
+        <div style="display: flex; gap: 20px">
+          <button class="nav-btn" id="popup-btn1">Zaakceptuj wymagane</button>
+          <button class="nav-btn" id="popup-btn2">Zaakceptuj wszystkie</button>
+        </div>
+      </div>
+    </div>
+    <div class="popup" id="info-popup" style="display: block">
+      <div class="popup-content">
+        <div>
+          <div class="popup-header">
+            <!-- <img src="images/database-file-icon.png" /> -->
+            <h1>Peregrynacja</h1>
+          </div>
+
+          <h2 class="popupText">
+            Już <b>2 marca 2025 r.</b> w Naszym kościele odbędzie się
+            peregrynacja obrazu obrazu Najświętszej Marii Panny. Zapraszamy do
+            udziału w tym jakże ważnym wydarzeniu!<br /><br />Jeśli chcesz
+            dowiedzieć się więcej na ten temat, kliknij w przycisk "Więcej
+            informacji". Ten komunikat będzie się wyświetlał każdorazowo, aż do
+            dnia wydarzenia.
+          </h2>
+        </div>
+        <div style="display: flex; gap: 20px">
+          <button
+            class="nav-btn"
+            id="popup-btn3"
+            onclick="document.querySelector('#info-popup').style.display = 'none';"
+          >
+            Zamknij
+          </button>
+          <button
+            class="nav-btn"
+            id="popup-btn4"
+            onclick="location.href='/peregrination'"
+          >
+            Więcej informacji
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="overlay">
+      <div class="progress-divider">
+        <h3>Parafia Świętej Faustyny Dziewicy w Częstochowie</h3>
+      </div>
+      <br />
+      <div
+        class="progress-divider"
+        id="unsupported"
+        style="display: none; padding: 40px"
+      >
+        <h2>Za mało miejsca!</h2>
+        <h5>
+          Strona nie jest przystosowana do tak małych ekranów przez co mogą się
+          pojawić liczne błędy lub/i strona może wyglądać źle<br />
+          <button
+            class="nav-btn"
+            onclick="document.getElementById('overlay').style.display = 'none'"
+          >
+            Kontynuuj mimo to
+          </button>
+        </h5>
+      </div>
+      <div class="progress-divider" id="loading">
+        <h1>Wczytywanie...</h1>
+        <br />
+        <div id="progress-border">
+          <div id="progress-spacing">
+            <div id="progress-container">
+              <noscript>
+                <h2>Wystąpił problem podczas ładowania strony!</h2>
+                <br />
+                <h5>
+                  Nie można wyświetlić strony, ponieważ skrypty
+                  <u>JavaScript zostały wyłączone</u>!
+                </h5>
+              </noscript>
+              <div id="progress-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="progress-divider">
+        <h3>
+          Copyright 2025 © Parafia Świętej Faustyny Dziewicy w Częstochowie
+        </h3>
+      </div>
+    </div>
+    <style>
+      .super-style {
+        color: #3658c9;
+      }
+    </style>
+    <main>
+      <!-- <div class="message-container">
+        <h2>Służba liturgiczna</h2>
+        <br /><br /><br /><br /><br />
+        <div class="contact-container">
+          <div class="contact-box">
+            <div class="message"><b>Lektorzy</b></div>
+            <div class="details">
+              Aleksander, Michał, Mikołaj, Jakub, Szymon, Jakub, Oskar, Natan,
+              Paweł
+            </div>
+          </div>
+          <div class="contact-box">
+            <div class="message"><b>Ministranci</b></div>
+            <div class="details">Szymon, Wiktor</div>
+          </div>
+          <div class="contact-box">
+            <div class="message"><b>Kandydaci</b></div>
+            <div class="details">Oliwier, Antoni, Paweł</div>
+          </div>
+        </div>
+      </div> -->
+      <h1>Program peregrynacji</h1>
+      <div class="message-container">
+        <h2>Czwartek</h2>
+        <br />
+        <h5>Dzień Dziękczynienia za Sakrament Eucharystii i Kapłaństwa</h5>
+        <br /><b>18.00</b> Powitanie Ojca Jana, Misjonarza z Jasnej Góry i Msza
+        św. z nauką misyjną <br /><br />
+        <b>19.00</b> Adoracja Najświętszego Sakramentu <br /><br />
+        <b>21.00</b> Apel Jasnogórski
+      </div>
+      <div class="message-container">
+        <h2>Piątek</h2>
+        <br />
+        <h5>Dzień uwielbienia za dar Bożego Miłosierdzia</h5>
+        <br /><br />
+        <b>15:00</b> Godzina Miłosierdzia Bożego <br /><br /><b>17:30</b> Droga
+        Krzyżowa <br /><br /><b>18.00</b> Msza św. z nauką misyjną oraz
+        odnowienie przyrzeczeń chrztu świętego. Przynosimy świece. <br /><br />
+        <b>19.00</b> Adoracja Najświętszego Sakramentu <br /><br />
+        <b>21.00</b> Apel Jasnogórski
+      </div>
+      <div class="message-container">
+        <h2>Sobota</h2>
+        <br />
+        <h5>
+          Dzień Pojednania z Bogiem i człowiekiem Dzień Małżeństw i Rodzin
+        </h5>
+        <br />
+        <b>15.00</b> Godzina Miłosierdzia Bożego <br /><br /><b>16:30</b>
+        Spowiedź <br /><br /><b>18.00</b> Msza św. z nauką misyjną oraz
+        odnowienie przyrzeczeń małżeńskich <br /><br />
+        <b>19.00</b> Adoracja Najświętszego Sakramentu <br /><br />
+        <b>21.00</b> Apel Jasnogórski
+      </div>
+      <div class="message-container">
+        <h2>Niedziela</h2>
+        <br />
+        <h5>Dzień nawiedzenia Maryii</h5>
+        <br />
+        <b>9.00</b> Msza św. z nauką misyjną <br /><br /><b>12.00</b> Msza św. z
+        nauką misyjną <br /><br />
+        <b>15.00</b> Gorbina Miłosierdzia Bożego <br /><br />
+        <p><b>17.00</b> Nabożeństwo oczekiwania</p>
+        <br />
+        <p>
+          <b>17.30</b> Powitanie obrazu Matki Bożej skrzyżowanie ul.
+          Małopolskiej z ul. Św. Faustyny
+        </p>
+        <br />
+        <p>
+          <b>18.00</b>
+          <span class="super-style"
+            >Msza św. pod przewodnictwem ks. biskupa, czuwanie wiernych przy
+            Matce Bożej</span
+          >
+        </p>
+        <br />
+        <p><b>19.30</b> Czuwanie grupy modlitewnej Krwi Chrystusa</p>
+        <br />
+        <p><b>21.00</b> <span class="super-style">Apel Jasnogórski</span></p>
+        <br />
+        <p><b>22.00</b> ul. Staropolska</p>
+        <br />
+        <p><b>23.00</b> ul. Wawrzynowicza</p>
+        <br />
+        <p><b>24.00</b> Msza św. o powołania kapłańskie i zakonne</p>
+        <br />
+        <p><b>1.00</b> ul. Elsnera</p>
+        <br />
+        <p><b>2.00</b> ul. Szajnowicza</p>
+        <br />
+        <p><b>3.00</b> ul. Małopolska nry nieparzyste</p>
+        <br />
+        <p><b>4.00</b> ul. Małopolska nry parzyste</p>
+        <br />
+        <p><b>5.00</b> ul. Marsowa</p>
+        <br />
+        <p><b>6.00</b> ul. Neptunowa</p>
+        <br />
+        <p><b>7.00</b> ul. Jowiszowa</p>
+        <br />
+        <p><b>8.00</b> ul. Łódzka</p>
+        <br />
+        <p><b>9.00</b> ul. Traugutta</p>
+        <br />
+        <p>
+          <b>10.00</b>
+          <span class="super-style"
+            >Msza święta dla osób chorych i starszych z udzieleniem sakramentu
+            chorych</span
+          >
+        </p>
+        <br />
+        <p><b>11.00</b> ul. Westerplatte</p>
+        <br />
+        <p><b>12.00</b> ul. Św. Faustyny</p>
+        <br />
+        <p><b>13.00</b> ul. Poleska nry nieparzyste</p>
+        <br />
+        <p><b>14.00</b> ul. Poleska nry parzyste</p>
+        <br />
+        <p>
+          <b>15.00</b>
+          <span class="super-style">Godzina Miłosierdzia Bożego</span>
+        </p>
+        <br />
+        <p>
+          <b>16.00</b> Msza św. dziękczynna za dar nawiedzenia Matki Bożej w
+          naszej parafii
+        </p>
+        <br />
+        <p>
+          <b>17.00</b> Pożegnanie obrazu Matki Bożej i przejazd obrazu do
+          parafii Św. Kaspra del Bufalo
+        </p>
+      </div>
+      <div class="message-container">
+        <h5>
+          Zadbamy o przygotowanie naszych domów i ulic, ale to przygotowanie
+          duchowe - naszych serc i rodzin jest najważniejsze. Zapraszam Was do
+          uczestniczenia w spotkaniach modlitewnych i konferencjach oraz
+          skorzystania ze spowiedzi. Maryja na swoim obrazie pokazuje na Jezusa
+          - pójdźmy za Jej wskazówką!
+        </h5>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Copyright 2025 © Parafia Świętej Faustyny Dziewicy w Częstochowie.
+        Wszystkie prawa zastrzeżone!
+      </p>
+      <div id="footerDivider">
+        <div class="footerSection">
+          <h3>Parafia</h3>
+          <a href="/service">Służba liturgiczna</a>
+          <a href="/biblegroup">Grupa biblijna</a>
+        </div>
+        <div class="footerSection">Wersja 2025.01</div>
+        <div class="footerSection">
+          <h3>Informacje</h3>
+          <a href="/privacypolicy">Polityka Prywatności</a>
+          <a href="/acknowledgements">Podziękowania</a>
+          <a href="/standards">Standardy ochrony dzieci</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="js/main.js"></script>
+  <script src="js/borders.js"></script>
+</html>

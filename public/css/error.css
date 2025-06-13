@@ -1,0 +1,100 @@
+/* Ogólny styl */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #28355d, #660606);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Nagłówek */
+header {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Główna sekcja */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.error-section {
+  margin-bottom: 30px;
+}
+
+.error-title {
+  font-size: 3rem;
+  color: #ff4c4c;
+  margin: 10px 0;
+}
+
+.error-description {
+  font-size: 1.5rem;
+  color: #ff9999;
+}
+
+.error-details {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 700px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* Stopka */
+footer {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #dddddd;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+  margin: 5px 0;
+}
+/* Przyciski */
+button {
+  padding: 10px;
+  margin: 10px 20px 10px 0px;
+  background-color: #73a6bf;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+/* Animacje i responsywność */
+@media (max-width: 600px) {
+  .error-title {
+    font-size: 2rem;
+  }
+
+  .error-description {
+    font-size: 1.2rem;
+  }
+
+  .error-details {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+}

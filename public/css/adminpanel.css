@@ -1,0 +1,354 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #cacaca;
+  color: #000000;
+  text-align: center;
+  margin: 50px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+h5 {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 5px;
+}
+
+h6 {
+  font-size: 12px;
+  color: #888;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  background-color: #0074d9;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.logoff,
+.block-btn {
+  background-color: darkred;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.logoff:hover,
+.block-btn:hover {
+  background-color: red;
+}
+
+.container {
+  background-color: rgba(115, 115, 115, 0.123);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+/* Popup style */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(45, 45, 45, 0.399);
+}
+
+.modal-content {
+  background-color: #cacaca;
+  border: #0056b3 5px solid;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 90%;
+  overflow-y: auto;
+}
+main {
+  background-color: #ffffff00;
+  border: #0056b3 5px solid;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+}
+.close-modal-btn {
+  background-color: #444;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+input {
+  border: none;
+  border-bottom: black 2px solid;
+  padding: 5px 0px;
+  background-color: #00000000;
+  margin: 2px 5px;
+  width: calc(100%-10px);
+}
+input:focus {
+  transition: 0.2s ease-in;
+  outline: none;
+  border-bottom: #0056b3 3px solid;
+}
+.close-modal-btn:hover {
+  background-color: #333;
+}
+nav {
+  background-color: #33333300;
+  text-align: center;
+  padding: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn {
+  background-color: #444444;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  h1 {
+    font-size: 25px;
+  }
+  .nav-btn {
+    padding: 10px 15px;
+    margin: 5px;
+  }
+}
+.nav-btn:hover {
+  background-color: #0074d9;
+}
+#overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* Ustaw z-index, aby overlay był na wierzchu */
+}
+#progress-container {
+  width: 100%;
+  max-width: 400px; /* Maksymalna szerokość paska postępu */
+  background-color: #ffffff; /* Kolor tła paska postępu */
+  border-radius: 5px; /* Zaokrąglenie rogów */
+  padding: 10px; /* Wewnętrzny odstęp */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); /* Cień */
+}
+
+#progress-bar {
+  width: 0;
+  height: 5px;
+  background-color: #0077cc;
+  transition: width 1s ease-in-out;
+}
+.page-content {
+  background-color: #222;
+  border-radius: 10px;
+  margin: 20px 0px;
+  justify-content: space-between;
+  overflow: hidden; /* Ukrywa tekst, który wychodzi poza granice diva */
+  padding: 10px;
+  width: 100%;
+}
+.ip-content {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px 0px;
+}
+.ip-data {
+  font-weight: bold;
+  align-self: center;
+  font-size: 120%;
+  margin: 20px 0px;
+}
+.info-section {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #888;
+  margin-right: 10px;
+  align-self: left;
+}
+
+.info-value {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item {
+  margin-bottom: 5px;
+  text-align: left;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #000000;
+  color: #e2f3ff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#account {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #0056b3;
+  border-radius: 20px;
+  max-width: 400px;
+  align-items: center;
+  padding: 10px;
+  color: white;
+}
+#account img {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+.stat img {
+  width: 50px;
+  height: 50px;
+}
+.stat {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  border: 3px #0056b3 solid;
+  border-radius: 20px;
+  max-width: 300px;
+  align-items: center;
+  padding: 5px 20px;
+  font-size: larger;
+  font-weight: bold;
+  flex-grow: 1;
+  transition: 0.3s ease;
+}
+#stats {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#safetySettings {
+  max-width: 400px; /* Maksymalna szerokość kontenera */
+  display: flex;
+  border: 3px #b30000 solid;
+  justify-content: space-around; /* Wyrównaj obrazki do środka */
+  align-items: center; /* Wyrównanie obrazków w pionie */
+  position: relative; /* Dla paska postępu */
+  overflow: hidden; /* Ukryj nadmiarowe elementy */
+  padding: 10px;
+  gap: 5px; /* Dodaj mały odstęp między obrazkami */
+}
+
+#safetySettings img,
+#announcements img,
+#borders img {
+  width: 30%; /* Każdy obrazek zajmie maksymalnie 30% szerokości kontenera */
+  max-width: 50px; /* Dodatkowo, aby obrazki nie przekraczały dostępnej przestrzeni */
+  max-height: 50px;
+  aspect-ratio: 1/1;
+  height: auto; /* Zachowanie proporcji obrazków */
+  flex-shrink: 1; /* Pozwala na zmniejszenie obrazków, jeśli jest za mało miejsca */
+}
+
+#safetySettingsProgressBar {
+  position: absolute;
+  height: 100%;
+  width: 35%;
+  left: 0;
+  top: 0;
+  background-color: #b30000;
+  z-index: -1; /* Pasek za obrazkami */
+  transition: 0.3s ease;
+}
+
+#announcements,
+#borders {
+  max-width: 400px; /* Maksymalna szerokość kontenera */
+  display: flex;
+  border: 3px #0056b3 solid;
+  justify-content: space-around; /* Wyrównaj obrazki do środka */
+  align-items: center; /* Wyrównanie obrazków w pionie */
+  position: relative; /* Dla paska postępu */
+  overflow: hidden; /* Ukryj nadmiarowe elementy */
+  padding: 10px;
+  gap: 5px; /* Dodaj mały odstęp między obrazkami */
+}
+@media (width > 650px) {
+  #safetySettings,
+  #announcements,
+  #borders {
+    gap: 30px;
+    padding: 10px 20px;
+  }
+}

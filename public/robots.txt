@@ -1,0 +1,23 @@
+# ====================================
+# Robots.txt Swieta Faustyna 2023 V2
+# Produly made by Aleksander Szarek
+# ====================================
+
+# Limit GoogleBot Image to data from Gallery
+User-agent: googlebot-image
+Disallow: /
+Allow: /events
+Allow: /api/v3/events/getImage/
+Allow: /api/v3/events/getEventList
+
+# Disallow Wayback Machines
+User-agent: ia_archiver
+Disallow: /
+
+# Block API and adminpanel indexing
+User-agent: *
+Allow: / 
+Disallow: /cgi-bin/
+Disallow: /adminpanel
+Disallow: /api/
+Sitemap: sitemap.xml
